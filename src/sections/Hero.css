@@ -1,0 +1,132 @@
+.hero-section {
+  overflow: hidden;
+}
+
+/* Staggered text animation */
+.hero-animate {
+  opacity: 0;
+  animation: hero-fade-up 0.7s ease forwards;
+}
+
+.hero-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.hero-delay-2 {
+  animation-delay: 0.25s;
+}
+
+.hero-delay-3 {
+  animation-delay: 0.4s;
+}
+
+.hero-delay-4 {
+  animation-delay: 0.55s;
+}
+
+.hero-delay-5 {
+  animation-delay: 0.7s;
+}
+
+.hero-delay-6 {
+  animation-delay: 0.85s;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Profile photo animation */
+.hero-profile {
+  opacity: 0;
+  animation: hero-profile-enter 0.9s ease forwards;
+  animation-delay: 0.35s;
+}
+
+@keyframes hero-profile-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Profile image hover */
+.hero-profile-image {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.hero-profile-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(139, 124, 255, 0.2);
+}
+
+/* Primary button hover */
+.hero-primary-btn {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero-primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(139, 124, 255, 0.25);
+}
+
+/* Resume button hover */
+.hero-resume-btn {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hero-resume-btn:hover {
+  transform: translateY(-3px);
+  background-color: #8b7cff !important;
+  color: #ffffff !important;
+}
+
+/* Social icons hover */
+.hero-social-link {
+  display: inline-block;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hero-social-link:hover {
+  color: #8b7cff !important;
+  transform: translateY(-4px);
+}
+
+/* Reduced-motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate,
+  .hero-profile {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .hero-profile-image,
+  .hero-primary-btn,
+  .hero-resume-btn,
+  .hero-social-link {
+    transition: none;
+  }
+}
