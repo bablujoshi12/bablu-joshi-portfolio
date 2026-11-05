@@ -12,23 +12,55 @@ import "./Experience.css";
 const experiences = [
   {
     type: "experience",
-    title: "Web Development Intern",
-    organization: "Internship",
-    duration: "4 Months",
+    title: "Full Stack Developer",
+    organization: "Dunacademy",
+    location: "Dehradun, Uttarakhand",
+    duration: "September 2026 – Present",
     icon: faBriefcase,
     description:
-      "Gained practical experience in web development and worked with modern JavaScript technologies.",
-    skills: ["React.js", "Node.js", "Express.js", "MongoDB"],
+      "Working on full-stack web application development, contributing to frontend and backend development, database integration, and building scalable web solutions.",
+    skills: [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    type: "internship",
+    title: "MERN Stack Developer Intern",
+    organization: "Web Development Internship",
+    duration: "March 2026 – August 2026",
+    icon: faBriefcase,
+    description:
+      "Gained 6 months of practical experience in full-stack web development, working on responsive interfaces, REST APIs, backend development, and database integration.",
+    skills: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "MySQL",
+      "EJS",
+      "JavaScript",
+    ],
   },
   {
     type: "education",
     title: "Diploma in Information Technology",
     organization: "Government Polytechnic Lohaghat",
-    duration: "Completed",
+    location: "Lohaghat, Uttarakhand",
+    duration: "2023 – 2026",
     icon: faGraduationCap,
     description:
-      "Completed a Diploma in Information Technology with a focus on programming and web development fundamentals.",
-    skills: ["Programming", "Web Development", "Database"],
+      "Completed a Diploma in Information Technology with a focus on programming, computer fundamentals, database management, and web development.",
+    skills: [
+      "Programming",
+      "Web Development",
+      "Database Management",
+      "Computer Fundamentals",
+    ],
     marksheet: "/marksheet.pdf",
   },
 ];
@@ -64,6 +96,7 @@ function Experience() {
       className={`experience-section ${visible ? "experience-visible" : ""}`}
     >
       <div className="container">
+        {/* Heading */}
         <div className="experience-heading text-center">
           <span className="experience-eyebrow">MY JOURNEY</span>
 
@@ -72,12 +105,13 @@ function Experience() {
           </h2>
 
           <p className="experience-subtitle">
-            My learning journey and practical development experience.
+            My professional experience, internship, and educational journey.
           </p>
 
           <div className="experience-heading-line" />
         </div>
 
+        {/* Experience Timeline */}
         <div className="experience-timeline">
           {experiences.map((item, index) => (
             <article
@@ -94,7 +128,9 @@ function Experience() {
                   <span className="experience-type">
                     {item.type === "experience"
                       ? "WORK EXPERIENCE"
-                      : "EDUCATION"}
+                      : item.type === "internship"
+                        ? "INTERNSHIP"
+                        : "EDUCATION"}
                   </span>
 
                   <span className="experience-duration">
@@ -106,10 +142,9 @@ function Experience() {
                 <h3 className="experience-card-title">{item.title}</h3>
 
                 <p className="experience-organization">
-                  {item.type === "education" && (
-                    <FontAwesomeIcon icon={faLocationDot} />
-                  )}
+                  <FontAwesomeIcon icon={faLocationDot} />
                   {item.organization}
+                  {item.location && ` • ${item.location}`}
                 </p>
 
                 <p className="experience-description">{item.description}</p>

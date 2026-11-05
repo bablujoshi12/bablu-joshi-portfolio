@@ -13,7 +13,15 @@ const skillGroups = [
   {
     title: "Frontend",
     icon: faLaptopCode,
-    skills: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap"],
+    skills: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Bootstrap",
+    ],
   },
   {
     title: "Backend",
@@ -23,12 +31,22 @@ const skillGroups = [
   {
     title: "Database",
     icon: faDatabase,
-    skills: ["MongoDB", "MySQL"],
+    skills: ["MongoDB", "MySQL", "PostgreSQL"],
   },
   {
     title: "Tools & Concepts",
     icon: faScrewdriverWrench,
-    skills: ["Git", "GitHub", "Postman", "Cloudinary"],
+    skills: [
+      "Git",
+      "GitHub",
+      "Postman",
+      "Cloudinary",
+      "EJS",
+      "Responsive Design",
+      "Render",
+      "Resend",
+      "Neon",
+    ],
   },
 ];
 
@@ -72,7 +90,7 @@ function Skills() {
           </h2>
 
           <p className="skills-subtitle">
-            Technologies and tools I use to build web applications.
+            Technologies and tools I use to build modern web applications.
           </p>
 
           <div className="skills-heading-line" />

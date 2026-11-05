@@ -14,19 +14,31 @@ const highlights = [
     icon: faGraduationCap,
     title: "Education",
     description: "Diploma in Information Technology",
+    date: "2023 – 2026",
     number: "01",
   },
   {
     icon: faBriefcase,
-    title: "Experience",
-    description: "4 months of internship experience",
+    title: "Internship",
+    description:
+      "MERN Stack Development (React.js, Node.js, Express.js, MongoDB, MySQL, EJS, HTML, CSS & JavaScript)",
+    date: "March 2026 – August 2026",
     number: "02",
+  },
+  {
+    icon: faBriefcase,
+    title: "Experience",
+    description: "Full Stack Developer",
+    date: "September 2026 – Present",
+    number: "03",
   },
   {
     icon: faCode,
     title: "Tech Stack",
-    description: "React, Node.js, Express and MongoDB",
-    number: "03",
+    description:
+      "React.js, Next.js, TypeScript, Node.js, Express.js, MongoDB, MySQL, PostgreSQL & JavaScript",
+    date: "Frontend & Backend",
+    number: "04",
   },
 ];
 
@@ -93,30 +105,31 @@ function About() {
 
             <p className="about-description">
               I'm Bablu Joshi, a Full Stack Developer focused on building
-              responsive and user-friendly web applications.
+              responsive, user-friendly, and scalable web applications.
             </p>
 
             <p className="about-description">
-              I have completed my Diploma in Information Technology and gained 4
-              months of internship experience in web development. I enjoy
-              learning new technologies, solving problems, and creating
-              practical projects using the MERN stack.
+              I have completed my Diploma in Information Technology and gained 6
+              months of internship experience in MERN Stack Development.
+              Currently, I'm working as a Full Stack Developer, expanding my
+              skills with Next.js, TypeScript, and PostgreSQL while building
+              practical web applications.
             </p>
 
             <div className="about-strengths">
               <div>
                 <FontAwesomeIcon icon={faCheck} />
-                <span>Responsive UI development</span>
+                <span>Responsive UI Development</span>
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faCheck} />
-                <span>REST API integration</span>
+                <span>REST API Development & Integration</span>
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faCheck} />
-                <span>MongoDB and Express.js</span>
+                <span>Database Design & Management</span>
               </div>
             </div>
 
@@ -142,7 +155,10 @@ function About() {
 
                 <div className="about-card-content">
                   <h4>{item.title}</h4>
+
                   <p>{item.description}</p>
+
+                  <span className="about-card-date">{item.date}</span>
                 </div>
 
                 <FontAwesomeIcon

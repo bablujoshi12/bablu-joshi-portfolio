@@ -18,6 +18,15 @@
   z-index: 1;
 }
 
+.about-card-date {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #888);
+  letter-spacing: 0.3px;
+}
+
 /* Section heading */
 .about-heading {
   margin-bottom: 65px;
