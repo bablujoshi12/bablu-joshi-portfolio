@@ -1,132 +1,110 @@
 .hero-section {
-  overflow: hidden;
+  background-color: #101114;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  scroll-margin-top: 84px;
 }
 
-/* Staggered text animation */
-.hero-animate {
-  opacity: 0;
-  animation: hero-fade-up 0.7s ease forwards;
+.hero-intro {
+  color: #8b7cff;
+  letter-spacing: 3px;
+  font-size: 14px;
 }
 
-.hero-delay-1 {
-  animation-delay: 0.1s;
+.hero-title {
+  color: #ffffff;
 }
 
-.hero-delay-2 {
-  animation-delay: 0.25s;
+.hero-role {
+  color: #8b7cff;
 }
 
-.hero-delay-3 {
-  animation-delay: 0.4s;
+.hero-description {
+  color: #a5a7b0;
+  line-height: 1.7;
 }
 
-.hero-delay-4 {
-  animation-delay: 0.55s;
-}
-
-.hero-delay-5 {
-  animation-delay: 0.7s;
-}
-
-.hero-delay-6 {
-  animation-delay: 0.85s;
-}
-
-@keyframes hero-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Profile photo animation */
-.hero-profile {
-  opacity: 0;
-  animation: hero-profile-enter 0.9s ease forwards;
-  animation-delay: 0.35s;
-}
-
-@keyframes hero-profile-enter {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Profile image hover */
-.hero-profile-image {
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.hero-profile-image:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(139, 124, 255, 0.2);
-}
-
-/* Primary button hover */
 .hero-primary-btn {
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #8b7cff;
+  color: #ffffff;
+  border: 1px solid #8b7cff;
+  transition: all 0.3s ease;
 }
 
 .hero-primary-btn:hover {
+  background-color: transparent;
+  color: #8b7cff;
+  border-color: #8b7cff;
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(139, 124, 255, 0.25);
 }
 
-/* Resume button hover */
 .hero-resume-btn {
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #8b7cff;
+  transition: all 0.3s ease;
 }
 
 .hero-resume-btn:hover {
+  background-color: #8b7cff;
+  color: #ffffff;
   transform: translateY(-3px);
-  background-color: #8b7cff !important;
-  color: #ffffff !important;
 }
 
-/* Social icons hover */
 .hero-social-link {
-  display: inline-block;
-  transition:
-    color 0.25s ease,
-    transform 0.25s ease;
+  color: #a5a7b0;
+  transition: all 0.3s ease;
 }
 
 .hero-social-link:hover {
-  color: #8b7cff !important;
+  color: #8b7cff;
   transform: translateY(-4px);
 }
 
-/* Reduced-motion accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .hero-animate,
-  .hero-profile {
-    opacity: 1;
-    animation: none;
-    transform: none;
+.hero-profile-image {
+  width: min(300px, 75vw);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 25%;
+  border: 3px solid #8b7cff;
+  background-color: #191b21;
+}
+
+.hero-profile-caption {
+  color: #a5a7b0;
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    padding-top: 90px;
   }
 
-  .hero-profile-image,
+  .hero-profile {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding-top: 80px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+  }
+
   .hero-primary-btn,
-  .hero-resume-btn,
-  .hero-social-link {
-    transition: none;
+  .hero-resume-btn {
+    font-size: 1rem;
   }
 }
