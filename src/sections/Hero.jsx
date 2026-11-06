@@ -4,6 +4,7 @@ import {
   faEnvelope,
   faArrowRight,
   faDownload,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 
 import profile from "../assets/profile.png";
@@ -11,33 +12,50 @@ import "./Hero.css";
 
 function Hero() {
   return (
-    <section id="home" className="container-fluid hero-section">
-      <div className="container">
-        <div className="row align-items-center justify-content-between g-5">
-          {/* Introduction */}
-          <div className="col-12 col-lg-7 text-center text-lg-start hero-content">
-            <p className="text-uppercase fw-semibold mb-3 hero-animate hero-delay-1 hero-intro pt-3">
-              Hello, I'm
-            </p>
+    <section id="home" className="hero-section">
+      <div className="container hero-container">
+        <div className="row align-items-center g-5">
+          {/* Left: Introduction */}
+          <div className="col-lg-7 hero-content">
+            {/* Availability Badge */}
+            <div className="hero-status slide-left delay-1">
+              <span className="status-dot"></span>
+              AVAILABLE FOR OPPORTUNITIES
+            </div>
 
-            <h1 className="display-3 fw-bold mb-3 hero-animate hero-delay-2 hero-title">
-              Bablu Joshi
+            {/* Introduction */}
+            <p className="hero-greeting slide-left delay-2">Hello, I'm</p>
+
+            <h1 className="hero-title slide-left delay-3">
+              Bablu <span>Joshi.</span>
             </h1>
 
-            <h2 className="h2 fw-semibold mb-4 hero-animate hero-delay-3 hero-role">
+            <h2 className="hero-role slide-left delay-4">
               Full Stack Developer
             </h2>
 
-            <p className="fs-5 mb-4 hero-animate hero-delay-4 hero-description">
+            <p className="hero-description slide-left delay-5">
               I build responsive and scalable web applications using React.js,
               Next.js, Node.js, Express.js, TypeScript, MongoDB and PostgreSQL.
-              I enjoy solving real-world problems and building practical digital
-              experiences.
+              I enjoy solving real-world problems and creating meaningful
+              digital experiences.
             </p>
 
+            {/* Technologies */}
+            <div className="hero-tech slide-left delay-6">
+              <span>
+                <FontAwesomeIcon icon={faCode} />
+                MERN Stack
+              </span>
+
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>PostgreSQL</span>
+            </div>
+
             {/* Action Buttons */}
-            <div className="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-4 hero-animate hero-delay-5">
-              <a href="#projects" className="btn btn-lg hero-primary-btn">
+            <div className="hero-actions slide-left delay-7">
+              <a href="#projects" className="hero-primary-btn">
                 View Projects
                 <FontAwesomeIcon icon={faArrowRight} />
               </a>
@@ -46,7 +64,7 @@ function Hero() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-lg hero-resume-btn"
+                className="hero-resume-btn"
               >
                 Resume
                 <FontAwesomeIcon icon={faDownload} />
@@ -54,13 +72,14 @@ function Hero() {
             </div>
 
             {/* Social Links */}
-            <div className="d-flex justify-content-center justify-content-lg-start gap-4 mb-0 hero-animate hero-delay-6">
+            <div className="hero-socials slide-left delay-8">
+              <span className="social-label">CONNECT WITH ME</span>
+
               <a
                 href="https://github.com/bablujoshi12"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="fs-3 hero-social-link"
               >
                 <FontAwesomeIcon icon={faGithub} />
               </a>
@@ -70,35 +89,61 @@ function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="fs-3 hero-social-link"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
 
-              <a
-                href="mailto:bjbablujoshi@gmail.com"
-                aria-label="Email"
-                className="fs-3 hero-social-link"
-              >
+              <a href="mailto:bjbablujoshi@gmail.com" aria-label="Email">
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
             </div>
           </div>
 
-          {/* Profile Photo */}
-          <div className="col-12 col-lg-4 text-center hero-profile">
-            <img
-              src={profile}
-              alt="Bablu Joshi - Full Stack Developer"
-              className="rounded-circle img-fluid hero-profile-image"
-            />
+          {/* Right: Profile Section */}
+          <div className="col-lg-5 hero-visual slide-right">
+            <div className="hero-image-wrapper">
+              {/* Background Glow */}
+              <div className="hero-image-glow"></div>
 
-            <p className="small mt-3 mb-0 hero-profile-caption">
-              Full Stack Developer
-            </p>
+              {/* Decorative Rings */}
+              <div className="hero-circle circle-one"></div>
+              <div className="hero-circle circle-two"></div>
+
+              {/* Profile Image */}
+              <div className="hero-image-border">
+                <img
+                  src={profile}
+                  alt="Bablu Joshi - Full Stack Developer"
+                  className="hero-profile-image"
+                />
+              </div>
+
+              {/* Developer Card */}
+              <div className="floating-card card-top card-entrance delay-2">
+                <span className="floating-icon">{"</>"}</span>
+
+                <div className="floating-card-content">
+                  <strong>Developer</strong>
+                  <small>Building the web</small>
+                </div>
+              </div>
+
+              {/* Problem Solver Card */}
+              <div className="floating-card card-bottom card-entrance delay-3">
+                <span className="online-dot"></span>
+
+                <div className="floating-card-content">
+                  <strong>Problem Solver</strong>
+                  <small>Always learning</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom Decorative Line */}
+      <div className="hero-bottom-line"></div>
     </section>
   );
 }

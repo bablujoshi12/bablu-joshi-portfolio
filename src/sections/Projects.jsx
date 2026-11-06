@@ -17,13 +17,33 @@ import "./Projects.css";
 
 const projects = [
   {
+    title: "Retreats & Treks",
+    category: "Company Project | Travel Platform",
+    description:
+      "A travel platform developed at Dunacademy, where I contribute to building features using Next.js, TypeScript, and Neon PostgreSQL, focusing on scalable application architecture and user experience.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "React.js",
+      "PostgreSQL",
+      "Neon",
+      "Tailwind CSS",
+    ],
+    icon: faPlane,
+    number: "01",
+    status: "In Development",
+    github: "",
+    live: "",
+  },
+
+  {
     title: "ShopSphere",
     category: "Full Stack E-Commerce",
     description:
       "A full-stack e-commerce application featuring product management, search, filters, cart, wishlist, authentication, order management, and Razorpay integration.",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Razorpay"],
     icon: faCartShopping,
-    number: "01",
+    number: "02",
     status: "In Development",
     github: "https://github.com/bablujoshi12/shopsphere-mern-ecommerce",
     live: "https://shopsphere-mern-ecommerce-dxyg.onrender.com/",
@@ -35,7 +55,7 @@ const projects = [
       "A social media application with user authentication, profiles, image posts, likes, comments, follow/unfollow, and a personalized feed.",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"],
     icon: faUsers,
-    number: "02",
+    number: "03",
     status: "In Development",
     github: "https://github.com/bablujoshi12/social-media-app",
     live: "https://social-media-frontend-yob8.onrender.com/",
@@ -54,7 +74,7 @@ const projects = [
       "Joi",
     ],
     icon: faPlane,
-    number: "03",
+    number: "04",
     status: "Built as a Project",
     github: "https://github.com/bablujoshi12/wanderlust",
     live: "https://wanderlust-kn0c.onrender.com/listings",
@@ -66,24 +86,12 @@ const projects = [
       "A full-stack authentication project demonstrating user signup, login, password hashing, JWT-based authentication, and protected routes.",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"],
     icon: faShieldHalved,
-    number: "04",
+    number: "05",
     status: "Built as a Project",
     github: "https://github.com/bablujoshi12/MERN-AUTHENTICATION-PROJECT",
     live: "https://mern-auth-frontend-l40o.onrender.com/login",
   },
-  {
-    title: "Student Management System",
-    category: "CRUD Web Application",
-    description:
-      "A student management system built with Node.js, Express.js, EJS, and MongoDB to create, view, update, and delete student records.",
-    technologies: ["Node.js", "Express.js", "EJS", "MongoDB"],
-    icon: faGraduationCap,
-    number: "05",
-    status: "Built as a Project",
-    github:
-      "https://github.com/bablujoshi12/Student-Management-System-NodeJS-EJS-MongoDB",
-    live: "",
-  },
+
   {
     title: "User Management System",
     category: "CRUD Web Application",
@@ -109,27 +117,28 @@ const projects = [
     live: "",
   },
   {
+    title: "Student Management System",
+    category: "CRUD Web Application",
+    description:
+      "A student management system built with Node.js, Express.js, EJS, and MongoDB to create, view, update, and delete student records.",
+    technologies: ["Node.js", "Express.js", "EJS", "MongoDB"],
+    icon: faGraduationCap,
+    number: "08",
+    status: "Built as a Project",
+    github:
+      "https://github.com/bablujoshi12/Student-Management-System-NodeJS-EJS-MongoDB",
+    live: "",
+  },
+  {
     title: "React Basic Lottery Game",
     category: "React Mini Project",
     description:
       "A simple lottery game that generates a ticket, calculates the sum of its numbers, and checks whether it matches the winning sum.",
     technologies: ["React.js", "JavaScript", "CSS"],
     icon: faTicket,
-    number: "08",
-    status: "Built as a Project",
-    github: "https://github.com/bablujoshi12/React-Basic-Lottery-Game",
-    live: "",
-  },
-  {
-    title: "Simple Calculator",
-    category: "Frontend Mini Project",
-    description:
-      "A simple calculator project built with HTML. Update the description if your repository includes additional functionality.",
-    technologies: ["HTML"],
-    icon: faCalculator,
     number: "09",
     status: "Built as a Project",
-    github: "https://github.com/bablujoshi12/simple-calculator",
+    github: "https://github.com/bablujoshi12/React-Basic-Lottery-Game",
     live: "",
   },
   {
@@ -142,6 +151,18 @@ const projects = [
     number: "10",
     status: "Built as a Project",
     github: "https://github.com/bablujoshi12/weather-app",
+    live: "",
+  },
+  {
+    title: "Simple Calculator",
+    category: "Frontend Mini Project",
+    description:
+      "A simple calculator project built with HTML. Update the description if your repository includes additional functionality.",
+    technologies: ["HTML"],
+    icon: faCalculator,
+    number: "11",
+    status: "Built as a Project",
+    github: "https://github.com/bablujoshi12/simple-calculator",
     live: "",
   },
 ];

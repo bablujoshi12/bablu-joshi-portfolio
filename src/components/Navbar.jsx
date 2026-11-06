@@ -150,14 +150,6 @@ function Navbar() {
               </button>
             </div>
 
-            {/* Navigation Heading */}
-            <div
-              className="small text-uppercase fw-semibold mb-3 px-1"
-              style={{ color: "#A5A7B0", letterSpacing: "1px" }}
-            >
-              Navigation
-            </div>
-
             {/* Navigation Links */}
             <nav className="d-flex flex-column gap-2">
               {navItems.map((item) => (

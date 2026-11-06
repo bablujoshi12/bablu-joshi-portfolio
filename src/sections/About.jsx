@@ -1,45 +1,46 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
+  faCode,
+  faLaptopCode,
+  faDatabase,
   faGraduationCap,
   faBriefcase,
-  faCode,
   faArrowRight,
-  faCheck,
+  faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
+
 import "./About.css";
 
-const highlights = [
+const strengths = [
   {
-    icon: faGraduationCap,
-    title: "Education",
-    description: "Diploma in Information Technology",
-    date: "2023 – 2026",
-    number: "01",
-  },
-  {
-    icon: faBriefcase,
-    title: "Internship",
-    description:
-      "MERN Stack Development (React.js, Node.js, Express.js, MongoDB, MySQL, EJS, HTML, CSS & JavaScript)",
-    date: "March 2026 – August 2026",
-    number: "02",
-  },
-  {
-    icon: faBriefcase,
-    title: "Experience",
-    description: "Full Stack Developer",
-    date: "September 2026 – Present",
-    number: "03",
+    icon: faLaptopCode,
+    title: "Frontend Development",
+    description: "Modern, responsive user interfaces.",
   },
   {
     icon: faCode,
-    title: "Tech Stack",
-    description:
-      "React.js, Next.js, TypeScript, Node.js, Express.js, MongoDB, MySQL, PostgreSQL & JavaScript",
-    date: "Frontend & Backend",
-    number: "04",
+    title: "Backend Development",
+    description: "REST APIs and server-side development.",
   },
+  {
+    icon: faDatabase,
+    title: "Database Management",
+    description: "MongoDB, MySQL and PostgreSQL.",
+  },
+];
+
+const technologies = [
+  "React.js",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "MySQL",
+  "PostgreSQL",
 ];
 
 function About() {
@@ -58,9 +59,7 @@ function About() {
           observer.disconnect();
         }
       },
-      {
-        threshold: 0.2,
-      },
+      { threshold: 0.08 },
     );
 
     observer.observe(section);
@@ -76,100 +75,146 @@ function About() {
     >
       <div className="container about-container">
         {/* Heading */}
-        <div className="about-heading text-center">
-          <span className="about-eyebrow">GET TO KNOW ME</span>
+        <div className="about-heading">
+          <span className="about-eyebrow">
+            <span />
+            ABOUT ME
+          </span>
 
           <h2 className="about-title">
-            About <span>Me</span>
+            Who I <span>Am.</span>
           </h2>
 
           <p className="about-subtitle">
-            A little about my journey into web development.
+            A developer focused on building real-world web applications.
           </p>
-
-          <div className="about-heading-line" />
         </div>
 
-        <div className="row align-items-center g-5">
-          {/* Introduction */}
-          <div className="col-12 col-lg-6 about-intro">
-            <div className="about-status">
-              <span className="about-status-dot" />
-              Passionate about building for the web
+        <div className="row align-items-center g-4">
+          {/* Left: Introduction */}
+          <div className="col-12 col-lg-7 about-intro-column">
+            <div className="about-intro">
+              <div className="about-status">
+                <span className="about-status-dot" />
+                FULL STACK DEVELOPER
+              </div>
+
+              <h3 className="about-intro-title">
+                Hi, I'm <span>Bablu Joshi.</span>
+              </h3>
+
+              <p className="about-description">
+                I'm an IT graduate and Full Stack Developer with hands-on
+                experience in building web applications using React.js, Node.js,
+                Express.js and MongoDB.
+              </p>
+
+              <p className="about-description">
+                Currently, I'm working at <strong>Dunacademy, Dehradun</strong>,
+                where I'm contributing to
+                <strong> Retreats & Treks</strong> — a company project built
+                with Next.js, TypeScript and Neon PostgreSQL.
+              </p>
+
+              {/* Professional Details */}
+              <div className="about-details">
+                <div className="about-detail">
+                  <span className="about-detail-icon">
+                    <FontAwesomeIcon icon={faGraduationCap} />
+                  </span>
+                  <div>
+                    <small>EDUCATION</small>
+                    <strong>Diploma in IT</strong>
+                  </div>
+                </div>
+
+                <div className="about-detail">
+                  <span className="about-detail-icon">
+                    <FontAwesomeIcon icon={faBriefcase} />
+                  </span>
+                  <div>
+                    <small>CURRENT ROLE</small>
+                    <strong>Full Stack Developer</strong>
+                  </div>
+                </div>
+              </div>
+
+              {/* Company Project Highlight */}
+              <div className="about-company-card">
+                <span className="about-company-icon">
+                  <FontAwesomeIcon icon={faBuilding} />
+                </span>
+
+                <div>
+                  <span className="about-company-label">
+                    CURRENT COMPANY PROJECT
+                  </span>
+                  <h4>Retreats & Treks</h4>
+                  <p>
+                    Contributing to Dunacademy's project using Next.js,
+                    TypeScript and Neon PostgreSQL.
+                  </p>
+                </div>
+              </div>
+
+              <a href="#projects" className="about-cta">
+                Explore My Work
+                <FontAwesomeIcon icon={faArrowRight} />
+              </a>
             </div>
-
-            <h3 className="about-intro-title">
-              Turning ideas into
-              <span> digital experiences.</span>
-            </h3>
-
-            <p className="about-description">
-              I'm Bablu Joshi, a Full Stack Developer focused on building
-              responsive, user-friendly, and scalable web applications.
-            </p>
-
-            <p className="about-description">
-              I have completed my Diploma in Information Technology and gained 6
-              months of internship experience in MERN Stack Development.
-              Currently, I'm working as a Full Stack Developer, expanding my
-              skills with Next.js, TypeScript, and PostgreSQL while building
-              practical web applications.
-            </p>
-
-            <div className="about-strengths">
-              <div>
-                <FontAwesomeIcon icon={faCheck} />
-                <span>Responsive UI Development</span>
-              </div>
-
-              <div>
-                <FontAwesomeIcon icon={faCheck} />
-                <span>REST API Development & Integration</span>
-              </div>
-
-              <div>
-                <FontAwesomeIcon icon={faCheck} />
-                <span>Database Design & Management</span>
-              </div>
-            </div>
-
-            <a href="#projects" className="about-project-btn">
-              Explore My Projects
-              <FontAwesomeIcon icon={faArrowRight} />
-            </a>
           </div>
 
-          {/* Highlight Cards */}
-          <div className="col-12 col-lg-6 about-highlights">
-            {highlights.map((item, index) => (
-              <div
-                className="about-card"
-                key={item.title}
-                style={{ "--card-index": index }}
-              >
-                <span className="about-card-number">{item.number}</span>
+          {/* Right: Technical Approach */}
+          <div className="col-12 col-lg-5 about-approach-column">
+            <div className="about-approach">
+              <div className="about-approach-heading">
+                <span className="about-approach-icon">
+                  <FontAwesomeIcon icon={faCode} />
+                </span>
 
-                <div className="about-card-icon">
-                  <FontAwesomeIcon icon={item.icon} />
+                <div>
+                  <span>MY EXPERTISE</span>
+                  <h4>What I Do</h4>
                 </div>
-
-                <div className="about-card-content">
-                  <h4>{item.title}</h4>
-
-                  <p>{item.description}</p>
-
-                  <span className="about-card-date">{item.date}</span>
-                </div>
-
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  className="about-card-arrow"
-                />
               </div>
-            ))}
+
+              <p className="about-approach-description">
+                I work across the frontend and backend to build functional,
+                responsive and maintainable applications.
+              </p>
+
+              <div className="about-strengths">
+                {strengths.map((item) => (
+                  <div className="about-strength" key={item.title}>
+                    <span className="about-strength-icon">
+                      <FontAwesomeIcon icon={item.icon} />
+                    </span>
+
+                    <div>
+                      <h5>{item.title}</h5>
+                      <p>{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="about-technologies">
+                <span className="about-tech-label">
+                  TECHNOLOGIES I WORK WITH
+                </span>
+
+                <div className="about-tech-tags">
+                  {technologies.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <div className="about-bottom-line" />
     </section>
   );
 }

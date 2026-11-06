@@ -1,110 +1,975 @@
+/* =========================================
+   HERO SECTION
+========================================= */
+
 .hero-section {
-  background-color: #101114;
-  padding-top: 100px;
-  padding-bottom: 30px;
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 82% 45%,
+      rgba(139, 124, 255, 0.1),
+      transparent 35%
+    ),
+    #101114;
+
+  padding: 110px 0 80px;
   scroll-margin-top: 84px;
 }
 
-.hero-intro {
-  color: #8b7cff;
-  letter-spacing: 3px;
-  font-size: 14px;
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Availability Badge */
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 9px 15px;
+  margin-bottom: 27px;
+
+  color: #b8adff;
+  background: rgba(139, 124, 255, 0.08);
+
+  border: 1px solid rgba(139, 124, 255, 0.25);
+  border-radius: 50px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+
+  background: #8b7cff;
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px rgba(139, 124, 255, 0.8);
+
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 3px #8b7cff;
+  }
+}
+
+/* Typography */
+
+.hero-greeting {
+  color: #a5a7b0;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .hero-title {
   color: #ffffff;
+
+  font-size: clamp(3.5rem, 6vw, 5.2rem);
+  font-weight: 800;
+
+  letter-spacing: -3px;
+  line-height: 1.1;
+
+  margin-bottom: 15px;
+}
+
+.hero-title span {
+  color: #8b7cff;
 }
 
 .hero-role {
-  color: #8b7cff;
+  color: #ffffff;
+
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+
+  margin-bottom: 22px;
 }
 
 .hero-description {
+  max-width: 600px;
+
   color: #a5a7b0;
-  line-height: 1.7;
+
+  font-size: 15px;
+  line-height: 1.9;
+
+  margin-bottom: 25px;
 }
 
-.hero-primary-btn {
+/* =========================================
+   TECH STACK
+========================================= */
+
+.hero-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 30px;
+}
+
+.hero-tech span {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background-color: #8b7cff;
-  color: #ffffff;
-  border: 1px solid #8b7cff;
+  gap: 7px;
+
+  padding: 8px 12px;
+
+  color: #c5c0e8;
+  background: rgba(139, 124, 255, 0.07);
+
+  border: 1px solid rgba(139, 124, 255, 0.2);
+  border-radius: 6px;
+
+  font-size: 12px;
+  font-weight: 600;
+
   transition: all 0.3s ease;
 }
 
-.hero-primary-btn:hover {
-  background-color: transparent;
-  color: #8b7cff;
+.hero-tech span:hover {
+  color: #ffffff;
+  background: rgba(139, 124, 255, 0.16);
   border-color: #8b7cff;
+
   transform: translateY(-3px);
 }
 
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  margin-bottom: 35px;
+}
+
+.hero-primary-btn,
 .hero-resume-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background-color: transparent;
-  color: #ffffff;
-  border: 1px solid #8b7cff;
+  justify-content: center;
+  gap: 11px;
+
+  padding: 13px 22px;
+
+  border-radius: 8px;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
   transition: all 0.3s ease;
+}
+
+.hero-primary-btn {
+  color: #ffffff;
+  background: #8b7cff;
+
+  border: 1px solid #8b7cff;
+}
+
+.hero-primary-btn:hover {
+  color: #8b7cff;
+  background: transparent;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 8px 25px rgba(139, 124, 255, 0.15);
+}
+
+.hero-primary-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.hero-primary-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.hero-resume-btn {
+  color: #ffffff;
+  background: rgba(139, 124, 255, 0.04);
+
+  border: 1px solid rgba(139, 124, 255, 0.45);
 }
 
 .hero-resume-btn:hover {
-  background-color: #8b7cff;
   color: #ffffff;
-  transform: translateY(-3px);
-}
+  background: rgba(139, 124, 255, 0.15);
 
-.hero-social-link {
-  color: #a5a7b0;
-  transition: all 0.3s ease;
-}
-
-.hero-social-link:hover {
-  color: #8b7cff;
+  border-color: #8b7cff;
   transform: translateY(-4px);
 }
 
-.hero-profile-image {
-  width: min(300px, 75vw);
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  object-position: center 25%;
-  border: 3px solid #8b7cff;
-  background-color: #191b21;
+/* =========================================
+   SOCIAL LINKS
+========================================= */
+
+.hero-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.hero-profile-caption {
-  color: #a5a7b0;
+.social-label {
+  color: #777985;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+
+  margin-right: 5px;
 }
+
+.hero-socials a {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #a5a7b0;
+  background: #191b21;
+
+  border: 1px solid #30303a;
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.hero-socials a:hover {
+  color: #ffffff;
+  background: #8b7cff;
+
+  border-color: #8b7cff;
+
+  transform: translateY(-4px);
+}
+
+/* =========================================
+   RIGHT PROFILE SECTION
+========================================= */
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  overflow: visible;
+}
+
+.hero-image-wrapper {
+  position: relative;
+
+  width: min(340px, 85%);
+  aspect-ratio: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  isolation: isolate;
+  overflow: visible;
+}
+
+/* Background Glow */
+
+.hero-image-glow {
+  position: absolute;
+  z-index: -1;
+
+  width: 75%;
+  height: 75%;
+
+  border-radius: 50%;
+
+  background: rgba(139, 124, 255, 0.22);
+  filter: blur(65px);
+}
+
+/* Profile Border */
+
+.hero-image-border {
+  position: relative;
+  z-index: 2;
+
+  width: 78%;
+  height: 78%;
+
+  padding: 7px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(145deg, #a397ff, #6555c5 50%, #302b49);
+
+  box-shadow:
+    0 0 25px rgba(139, 124, 255, 0.17),
+    0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Image */
+
+.hero-profile-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 25%;
+
+  border-radius: 50%;
+  border: 5px solid #101114;
+
+  background: #191b21;
+}
+
+/* =========================================
+   DECORATIVE RINGS
+========================================= */
+
+.hero-circle {
+  position: absolute;
+
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circle-one {
+  width: 96%;
+  height: 96%;
+
+  border: 1px solid rgba(139, 124, 255, 0.24);
+
+  animation: rotate 25s linear infinite;
+}
+
+.circle-two {
+  width: 108%;
+  height: 108%;
+
+  border: 1px solid rgba(139, 124, 255, 0.08);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   FLOATING CARDS
+========================================= */
+
+.floating-card {
+  position: absolute;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 13px;
+
+  background: rgba(25, 26, 34, 0.97);
+
+  border: 1px solid rgba(139, 124, 255, 0.35);
+  border-radius: 10px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  white-space: nowrap;
+}
+
+.floating-card-content strong,
+.floating-card-content small {
+  display: block;
+}
+
+.floating-card-content strong {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.floating-card-content small {
+  color: #a5a7b0;
+  font-size: 10px;
+
+  margin-top: 4px;
+}
+
+.floating-icon {
+  flex-shrink: 0;
+
+  color: #8b7cff;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.online-dot {
+  width: 9px;
+  height: 9px;
+
+  flex-shrink: 0;
+
+  background: #8b7cff;
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px rgba(139, 124, 255, 0.7);
+}
+
+/* Card Positions */
+
+.card-top {
+  top: 11%;
+  right: -9%;
+}
+
+.card-bottom {
+  bottom: 11%;
+  left: -9%;
+}
+
+/* =========================================
+   BOTTOM LINE
+========================================= */
+
+.hero-bottom-line {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 124, 255, 0.4),
+    transparent
+  );
+}
+
+/* =========================================
+   SLIDE ANIMATIONS
+========================================= */
+
+.slide-left {
+  opacity: 0;
+
+  animation: slideFromLeft 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.slide-right {
+  opacity: 0;
+
+  animation: slideFromRight 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.card-entrance {
+  opacity: 0;
+
+  animation: cardSlideIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-55px, 0, 0);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translate3d(65px, 0, 0) scale(0.96);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, 15px, 0) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Animation Delays */
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+.delay-5 {
+  animation-delay: 0.5s;
+}
+
+.delay-6 {
+  animation-delay: 0.6s;
+}
+
+.delay-7 {
+  animation-delay: 0.7s;
+}
+
+.delay-8 {
+  animation-delay: 0.8s;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
 
 @media (max-width: 991px) {
   .hero-section {
-    padding-top: 90px;
-  }
-
-  .hero-profile {
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-section {
-    padding-top: 80px;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
+    min-height: auto;
+    padding: 110px 0 75px;
+    text-align: center;
   }
 
   .hero-description {
-    font-size: 1rem !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions,
+  .hero-tech,
+  .hero-socials {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    margin-top: 25px;
+  }
+
+  .hero-image-wrapper {
+    width: min(320px, 75vw);
+  }
+
+  .card-top {
+    right: -6%;
+  }
+
+  .card-bottom {
+    left: -6%;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 576px) {
+  .hero-section {
+    min-height: auto;
+
+    padding: 100px 0 65px;
+
+    background:
+      radial-gradient(
+        ellipse at 50% 75%,
+        rgba(139, 124, 255, 0.11),
+        transparent 40%
+      ),
+      #101114;
+  }
+
+  /* Typography */
+
+  .hero-title {
+    font-size: 2.8rem;
+    letter-spacing: -2px;
+  }
+
+  .hero-greeting {
+    font-size: 17px;
+  }
+
+  .hero-role {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* Badge */
+
+  .hero-status {
+    font-size: 9px;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+  }
+
+  /* Tech Stack */
+
+  .hero-tech {
+    gap: 8px;
+    margin-bottom: 27px;
+  }
+
+  .hero-tech span {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  /* Buttons */
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+
+    margin-bottom: 30px;
   }
 
   .hero-primary-btn,
   .hero-resume-btn {
-    font-size: 1rem;
+    width: 100%;
+    padding: 13px 18px;
+  }
+
+  /* Social */
+
+  .hero-socials {
+    gap: 12px;
+  }
+
+  .hero-socials a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-label {
+    display: none;
+  }
+
+  /* Profile */
+
+  .hero-visual {
+    width: 100%;
+    padding: 0 12px;
+    margin-top: 35px;
+  }
+
+  .hero-image-wrapper {
+    width: min(275px, 76vw);
+  }
+
+  .hero-image-border {
+    width: 78%;
+    height: 78%;
+    padding: 6px;
+  }
+
+  .hero-profile-image {
+    object-position: center 25%;
+  }
+
+  /* Rings */
+
+  .circle-one {
+    width: 96%;
+    height: 96%;
+  }
+
+  .circle-two {
+    width: 106%;
+    height: 106%;
+  }
+
+  /* Floating Cards */
+
+  .floating-card {
+    padding: 9px 10px;
+    gap: 7px;
+    border-radius: 9px;
+  }
+
+  .floating-card-content strong {
+    font-size: 10px;
+  }
+
+  .floating-card-content small {
+    font-size: 9px;
+  }
+
+  .floating-icon {
+    font-size: 18px;
+  }
+
+  .online-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .card-top {
+    top: 8%;
+    right: -5%;
+  }
+
+  .card-bottom {
+    bottom: 8%;
+    left: -5%;
+  }
+
+  /* Mobile Slide Animation */
+
+  @keyframes slideFromLeft {
+    from {
+      opacity: 0;
+      transform: translate3d(-30px, 0, 0);
+      filter: blur(3px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes slideFromRight {
+    from {
+      opacity: 0;
+      transform: translate3d(30px, 0, 0) scale(0.97);
+      filter: blur(3px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+    }
+  }
+}
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-role {
+    font-size: 1.35rem;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .hero-image-wrapper {
+    width: 245px;
+  }
+
+  .floating-card {
+    padding: 8px 9px;
+    gap: 6px;
+  }
+
+  .card-top {
+    right: -3%;
+  }
+
+  .card-bottom {
+    left: -3%;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-section *,
+  .hero-section *::before,
+  .hero-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .slide-left,
+  .slide-right,
+  .card-entrance {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* =========================================
+   MOBILE HERO PROFILE FIX
+========================================= */
+
+@media (max-width: 576px) {
+  /* Hide floating cards on mobile */
+  .hero-visual .floating-card {
+    display: none !important;
+  }
+
+  /* Profile section spacing */
+  .hero-visual {
+    margin-top: 30px;
+    padding: 0;
+    overflow: visible;
+  }
+
+  /* Profile image container */
+  .hero-image-wrapper {
+    width: min(260px, 72vw);
+    margin: 0 auto;
+  }
+
+  /* Profile image border */
+  .hero-image-border {
+    width: 80%;
+    height: 80%;
+    padding: 6px;
+  }
+
+  /* Actual image */
+  .hero-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+  }
+
+  /* Subtle outer ring */
+  .circle-one {
+    width: 98%;
+    height: 98%;
+    border-color: rgba(139, 124, 255, 0.22);
+  }
+
+  /* Remove extra decorative ring */
+  .circle-two {
+    display: none;
+  }
+
+  /* Subtle glow */
+  .hero-image-glow {
+    width: 80%;
+    height: 80%;
+    filter: blur(45px);
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+  .hero-image-wrapper {
+    width: 230px;
+  }
+
+  .hero-visual {
+    margin-top: 25px;
+  }
+}
+
+/* Mobile: Both buttons in one row */
+
+@media (max-width: 576px) {
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-primary-btn,
+  .hero-resume-btn {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+
+    padding: 12px 8px;
+    gap: 7px;
+
+    font-size: 12px;
+    white-space: nowrap;
+    justify-content: center;
+  }
+
+  .hero-primary-btn svg,
+  .hero-resume-btn svg {
+    font-size: 12px;
   }
 }

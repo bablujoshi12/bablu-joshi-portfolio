@@ -3,56 +3,63 @@ import {
   faHeart,
   faArrowUp,
   faEnvelope,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import "./Footer.css";
+
+const quickLinks = [
+  ["Home", "#home"],
+  ["About", "#about"],
+  ["Skills", "#skills"],
+  ["Projects", "#projects"],
+  ["Experience", "#experience"],
+  ["Contact", "#contact"],
+];
 
 function Footer() {
-  return (
-    <footer
-      className="text-light py-5"
-      style={{
-        backgroundColor: "#191B21",
-        borderTop: "1px solid #30323A",
-      }}
-    >
-      <div className="container">
-        <div className="row g-4">
-          {/* Brand */}
-          <div className="col-12 col-md-6 col-lg-4">
-            <h4 className="fw-bold mb-3">
-              Bablu <span style={{ color: "#8B7CFF" }}>Joshi</span>
-            </h4>
+  const currentYear = new Date().getFullYear();
 
-            <p className="text-secondary mb-3">
-              Full Stack Developer passionate about building responsive and
-              user-friendly web applications.
+  return (
+    <footer className="portfolio-footer">
+      <div className="container">
+        <div className="footer-main">
+          {/* Brand */}
+          <div className="footer-brand">
+            <a href="#home" className="footer-logo">
+              Bablu <span>Joshi</span>
+            </a>
+
+            <p className="footer-description">
+              Full Stack Developer passionate about building responsive,
+              user-friendly, and meaningful web applications.
             </p>
 
-            <div className="d-flex gap-3">
+            <div className="footer-socials">
               <a
                 href="https://github.com/bablujoshi12"
                 target="_blank"
-                rel="noreferrer"
-                className="text-light fs-5"
+                rel="noopener noreferrer"
                 aria-label="GitHub"
+                className="footer-social-link"
               >
                 <FontAwesomeIcon icon={faGithub} />
               </a>
 
               <a
-                href="https://www.linkedin.com/in/bablu-joshi-b519b726a/?isSelfProfile=true"
+                href="https://www.linkedin.com/in/bablu-joshi-b519b726a/"
                 target="_blank"
-                rel="noreferrer"
-                className="text-light fs-5"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
+                className="footer-social-link"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
 
               <a
                 href="mailto:bjbablujoshi@gmail.com"
-                className="text-light fs-5"
                 aria-label="Email"
+                className="footer-social-link"
               >
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
@@ -60,24 +67,15 @@ function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="col-6 col-md-3 col-lg-4">
-            <h5 className="fw-semibold mb-3">Quick Links</h5>
+          <div className="footer-navigation">
+            <h5 className="footer-heading">Quick Links</h5>
 
-            <ul className="list-unstyled d-flex flex-column gap-2">
-              {[
-                ["Home", "#home"],
-                ["About", "#about"],
-                ["Skills", "#skills"],
-                ["Projects", "#projects"],
-                ["Experience", "#experience"],
-                ["Contact", "#contact"],
-              ].map(([label, href]) => (
+            <ul className="footer-nav-list">
+              {quickLinks.map(([label, href]) => (
                 <li key={href}>
-                  <a
-                    href={href}
-                    className="text-secondary text-decoration-none"
-                  >
-                    {label}
+                  <a href={href} className="footer-nav-link">
+                    <span>{label}</span>
+                    <FontAwesomeIcon icon={faArrowRight} />
                   </a>
                 </li>
               ))}
@@ -85,42 +83,46 @@ function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="col-6 col-md-3 col-lg-4">
-            <h5 className="fw-semibold mb-3">Let's Connect</h5>
+          <div className="footer-connect">
+            <h5 className="footer-heading">Let's Connect</h5>
 
-            <p className="text-secondary">
-              Have a project or opportunity in mind? Let's talk.
+            <p>
+              Have an opportunity or a project in mind? Feel free to reach out.
             </p>
 
             <a
-              href="mailto:your-email@example.com"
-              className="btn btn-outline-light btn-sm"
+              href="mailto:bjbablujoshi@gmail.com?subject=Let's%20Connect"
+              className="footer-contact-btn"
             >
-              <FontAwesomeIcon icon={faEnvelope} className="me-2" />
+              <FontAwesomeIcon icon={faEnvelope} />
               Contact Me
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="footer-contact-arrow"
+              />
             </a>
+
+            <span className="footer-email">bjbablujoshi@gmail.com</span>
           </div>
         </div>
 
-        <hr className="border-secondary my-4" />
-
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-          <p className="text-secondary small mb-0 text-center">
-            © {new Date().getFullYear()} Bablu Joshi. All rights reserved.
+        {/* Bottom Footer */}
+        <div className="footer-bottom">
+          <p className="footer-copyright">
+            © {currentYear} <strong>Bablu Joshi.</strong> All rights reserved.
           </p>
 
-          <p className="text-secondary small mb-0 text-center">
-            Made with{" "}
-            <FontAwesomeIcon icon={faHeart} style={{ color: "#8B7CFF" }} />{" "}
+          <p className="footer-made-with">
+            Made with
+            <FontAwesomeIcon icon={faHeart} />
             using React & Bootstrap
           </p>
 
-          <a
-            href="#home"
-            className="btn btn-sm btn-outline-light"
-            aria-label="Back to top"
-          >
-            <FontAwesomeIcon icon={faArrowUp} />
+          <a href="#home" className="footer-back-top">
+            <span>Back to top</span>
+            <span className="footer-back-top-icon">
+              <FontAwesomeIcon icon={faArrowUp} />
+            </span>
           </a>
         </div>
       </div>

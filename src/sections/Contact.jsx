@@ -5,8 +5,10 @@ import {
   faArrowUpRightFromSquare,
   faPaperPlane,
   faLocationDot,
+  faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 import "./Contact.css";
 
 const contactLinks = [
@@ -26,7 +28,7 @@ const contactLinks = [
     title: "LinkedIn",
     value: "Bablu Joshi",
     icon: faLinkedin,
-    href: "https://www.linkedin.com/in/bablu-joshi-b519b726a/?isSelfProfile=true",
+    href: "https://www.linkedin.com/in/bablu-joshi-b519b726a/",
   },
 ];
 
@@ -46,7 +48,7 @@ function Contact() {
           observer.disconnect();
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.1 },
     );
 
     observer.observe(section);
@@ -61,6 +63,7 @@ function Contact() {
       className={`contact-section ${visible ? "contact-visible" : ""}`}
     >
       <div className="container">
+        {/* Section Heading */}
         <div className="contact-heading text-center">
           <span className="contact-eyebrow">GET IN TOUCH</span>
 
@@ -69,16 +72,24 @@ function Contact() {
           </h2>
 
           <p className="contact-subtitle">
-            Looking for a junior developer? Let's connect and discuss
-            opportunities to build something meaningful.
+            Have an opportunity or want to discuss a project? I'd love to hear
+            from you.
           </p>
 
           <div className="contact-heading-line" />
         </div>
 
+        {/* Contact Content */}
         <div className="contact-content">
+          {/* Left Side */}
           <div className="contact-message">
-            <span className="contact-small-label">HAVE AN OPPORTUNITY?</span>
+            <div className="contact-message-top">
+              <div className="contact-message-icon">
+                <FontAwesomeIcon icon={faBriefcase} />
+              </div>
+
+              <span className="contact-small-label">OPEN TO OPPORTUNITIES</span>
+            </div>
 
             <h3>
               Let's build something
@@ -86,28 +97,45 @@ function Contact() {
             </h3>
 
             <p>
-              I'm interested in junior MERN Stack and Full Stack Developer
-              opportunities where I can contribute, learn, and grow as a
-              developer.
+              I'm interested in Junior MERN Stack and Full Stack Developer
+              opportunities where I can contribute my skills, work with a team,
+              and continue growing as a developer.
             </p>
 
             <a
-              href="mailto:your-email@example.com?subject=Job%20Opportunity"
+              href="mailto:bjbablujoshi@gmail.com?subject=Job%20Opportunity"
               className="contact-primary-btn"
             >
               <FontAwesomeIcon icon={faPaperPlane} />
-              Contact Me
+              Let's Connect
+              <FontAwesomeIcon
+                icon={faArrowUpRightFromSquare}
+                className="contact-btn-arrow"
+              />
             </a>
+
+            <div className="contact-availability">
+              <span className="availability-dot" />
+              Available for suitable opportunities
+            </div>
           </div>
 
+          {/* Right Side */}
           <div className="contact-links">
-            {contactLinks.map((item) => (
+            <div className="contact-links-heading">
+              <h3>Contact Information</h3>
+              <p>Choose your preferred way to connect.</p>
+            </div>
+
+            {contactLinks.map((item, index) => (
               <a
                 href={item.href}
                 key={item.title}
                 target={item.title === "Email" ? undefined : "_blank"}
                 rel={item.title === "Email" ? undefined : "noopener noreferrer"}
                 className="contact-link-card"
+                style={{ "--contact-index": index }}
+                aria-label={`Connect via ${item.title}`}
               >
                 <div className="contact-link-icon">
                   <FontAwesomeIcon icon={item.icon} />
@@ -126,10 +154,22 @@ function Contact() {
             ))}
 
             <div className="contact-location">
-              <FontAwesomeIcon icon={faLocationDot} />
-              <span>India · Open to opportunities</span>
+              <div className="contact-location-icon">
+                <FontAwesomeIcon icon={faLocationDot} />
+              </div>
+
+              <div>
+                <strong>Location</strong>
+                <span>India · Open to opportunities</span>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Bottom Note */}
+        <div className="contact-bottom-note">
+          <span>Have a great idea?</span>
+          <span>Let's turn it into reality.</span>
         </div>
       </div>
     </section>
