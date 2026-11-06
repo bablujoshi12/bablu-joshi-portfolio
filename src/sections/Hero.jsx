@@ -16,7 +16,7 @@ function Hero() {
         <div className="row align-items-center justify-content-between g-5">
           {/* Introduction */}
           <div className="col-12 col-lg-7 text-center text-lg-start hero-content">
-            <p className="text-uppercase fw-semibold mb-3 hero-animate hero-delay-1 hero-intro">
+            <p className="text-uppercase fw-semibold mb-3 hero-animate hero-delay-1 hero-intro pt-3">
               Hello, I'm
             </p>
 
