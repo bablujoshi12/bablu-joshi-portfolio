@@ -18,7 +18,6 @@
       transparent 30%
     ),
     #101114;
-
   color: #ffffff;
   scroll-margin-top: 85px;
 }
@@ -35,27 +34,13 @@
 .about-heading {
   margin-bottom: 55px;
   text-align: center;
-
-  opacity: 0;
-  transform: translateY(22px);
-
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
-
-.about-visible .about-heading {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .about-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-
   margin-bottom: 15px;
-
   color: #a99aff;
   font-size: 10px;
   font-weight: 800;
@@ -70,8 +55,8 @@
 }
 
 .about-title {
+  min-height: 1.2em;
   margin-bottom: 12px;
-
   color: #ffffff;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 800;
@@ -79,16 +64,40 @@
   line-height: 1.2;
 }
 
-.about-title span {
+.about-title span:not(.typing-cursor) {
   color: #8b7cff;
 }
 
 .about-subtitle {
   margin: 0;
-
   color: #92949f;
   font-size: 13px;
   line-height: 1.7;
+}
+
+/* =========================================
+   TYPING CURSOR
+========================================= */
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  margin-left: 5px;
+  vertical-align: -0.05em;
+  background: #8b7cff;
+  border-radius: 2px;
+  animation: typingBlink 0.75s steps(2, start) infinite;
+}
+
+.intro-cursor {
+  height: 0.85em;
+}
+
+@keyframes typingBlink {
+  to {
+    visibility: hidden;
+  }
 }
 
 /* =========================================
@@ -97,31 +106,12 @@
 
 .about-intro-column,
 .about-approach-column {
-  opacity: 0;
-  transform: translateY(25px);
-
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
-
-.about-visible .about-intro-column {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.15s;
-}
-
-.about-visible .about-approach-column {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.3s;
+  min-width: 0;
 }
 
 .about-intro {
   padding: 28px;
-
   background: linear-gradient(145deg, #1b1c25, #17181e);
-
   border: 1px solid rgba(255, 255, 255, 0.075);
   border-radius: 14px;
 }
@@ -132,9 +122,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-
   margin-bottom: 19px;
-
   color: #b4aaff;
   font-size: 9px;
   font-weight: 800;
@@ -144,16 +132,13 @@
 .about-status-dot {
   width: 7px;
   height: 7px;
-
   background: #8b7cff;
   border-radius: 50%;
-
   box-shadow: 0 0 10px rgba(139, 124, 255, 0.7);
-
-  animation: about-pulse 1.8s infinite;
+  animation: aboutPulse 1.8s infinite;
 }
 
-@keyframes about-pulse {
+@keyframes aboutPulse {
   50% {
     box-shadow: 0 0 0 6px rgba(139, 124, 255, 0.08);
   }
@@ -162,8 +147,8 @@
 /* Intro Title */
 
 .about-intro-title {
+  min-height: 1.3em;
   margin-bottom: 18px;
-
   color: #ffffff;
   font-size: clamp(1.7rem, 3vw, 2.3rem);
   font-weight: 800;
@@ -171,7 +156,7 @@
   line-height: 1.3;
 }
 
-.about-intro-title span {
+.about-intro-title > span:not(.typing-cursor) {
   color: #a99aff;
 }
 
@@ -179,7 +164,6 @@
 
 .about-description {
   margin-bottom: 15px;
-
   color: #a5a7b0;
   font-size: 12px;
   line-height: 1.9;
@@ -198,7 +182,6 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-
   margin: 23px 0;
 }
 
@@ -206,28 +189,31 @@
   display: flex;
   align-items: center;
   gap: 11px;
-
   min-width: 0;
   padding: 13px 11px;
-
   background: #14151b;
   border: 1px solid #30323a;
   border-radius: 8px;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-detail:hover {
+  border-color: rgba(139, 124, 255, 0.4);
+  transform: translateY(-3px);
 }
 
 .about-detail-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 35px;
   height: 35px;
   flex-shrink: 0;
-
   color: #a99aff;
   background: rgba(139, 124, 255, 0.12);
   border-radius: 8px;
-
   font-size: 13px;
 }
 
@@ -260,13 +246,10 @@
   display: flex;
   align-items: flex-start;
   gap: 13px;
-
   padding: 17px;
-
   background: rgba(139, 124, 255, 0.065);
   border: 1px solid rgba(139, 124, 255, 0.22);
   border-radius: 9px;
-
   transition:
     background 0.3s ease,
     border-color 0.3s ease;
@@ -281,15 +264,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 38px;
   height: 38px;
   flex-shrink: 0;
-
   color: #b4aaff;
   background: rgba(139, 124, 255, 0.15);
   border-radius: 8px;
-
   font-size: 14px;
 }
 
@@ -299,9 +279,7 @@
 
 .about-company-label {
   display: block;
-
   margin-bottom: 6px;
-
   color: #a99aff;
   font-size: 8px;
   font-weight: 800;
@@ -310,7 +288,6 @@
 
 .about-company-card h4 {
   margin-bottom: 6px;
-
   color: #ffffff;
   font-size: 15px;
   font-weight: 750;
@@ -318,7 +295,6 @@
 
 .about-company-card p {
   margin: 0;
-
   color: #a5a7b0;
   font-size: 10px;
   line-height: 1.8;
@@ -333,20 +309,15 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   margin-top: 23px;
   padding: 12px 17px;
-
   color: #ffffff;
   background: #8b7cff;
-
   border: 1px solid #8b7cff;
   border-radius: 7px;
-
   text-decoration: none;
   font-size: 11px;
   font-weight: 700;
-
   transition: all 0.3s ease;
 }
 
@@ -371,20 +342,15 @@
 .about-approach {
   height: 100%;
   padding: 27px;
-
   background: linear-gradient(145deg, #1b1c25, #17181e);
-
   border: 1px solid rgba(255, 255, 255, 0.075);
   border-radius: 14px;
 }
-
-/* Approach Heading */
 
 .about-approach-heading {
   display: flex;
   align-items: center;
   gap: 13px;
-
   margin-bottom: 18px;
 }
 
@@ -392,24 +358,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 43px;
   height: 43px;
   flex-shrink: 0;
-
   color: #a99aff;
   background: rgba(139, 124, 255, 0.13);
   border: 1px solid rgba(139, 124, 255, 0.2);
   border-radius: 10px;
-
   font-size: 16px;
 }
 
 .about-approach-heading div > span {
   display: block;
-
   margin-bottom: 4px;
-
   color: #a99aff;
   font-size: 8px;
   font-weight: 800;
@@ -418,7 +379,6 @@
 
 .about-approach-heading h4 {
   margin: 0;
-
   color: #ffffff;
   font-size: 18px;
   font-weight: 750;
@@ -426,7 +386,6 @@
 
 .about-approach-description {
   margin-bottom: 21px;
-
   color: #92949f;
   font-size: 11px;
   line-height: 1.8;
@@ -446,13 +405,10 @@
   display: flex;
   align-items: center;
   gap: 13px;
-
   padding: 13px;
-
   background: #14151b;
   border: 1px solid #30323a;
   border-radius: 8px;
-
   transition:
     border-color 0.25s ease,
     transform 0.25s ease,
@@ -469,21 +425,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-
   color: #a99aff;
   background: rgba(139, 124, 255, 0.12);
   border-radius: 8px;
-
   font-size: 13px;
 }
 
 .about-strength h5 {
   margin-bottom: 4px;
-
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
@@ -491,7 +443,6 @@
 
 .about-strength p {
   margin: 0;
-
   color: #92949f;
   font-size: 9px;
   line-height: 1.5;
@@ -504,15 +455,12 @@
 .about-technologies {
   margin-top: 24px;
   padding-top: 19px;
-
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .about-tech-label {
   display: block;
-
   margin-bottom: 13px;
-
   color: #92949f;
   font-size: 8px;
   font-weight: 800;
@@ -527,16 +475,12 @@
 
 .about-tech-tags span {
   padding: 7px 10px;
-
   color: #d5d5dc;
   background: #14151b;
-
   border: 1px solid #30323a;
   border-radius: 5px;
-
   font-size: 9px;
   font-weight: 600;
-
   transition: all 0.25s ease;
 }
 
@@ -554,18 +498,245 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-
   width: min(85%, 850px);
   height: 1px;
-
   background: linear-gradient(
     90deg,
     transparent,
     rgba(139, 124, 255, 0.4),
     transparent
   );
-
   transform: translateX(-50%);
+}
+
+/* =========================================
+   SEQUENTIAL ANIMATION SYSTEM
+========================================= */
+
+/* Common reveal */
+
+@keyframes aboutSequenceReveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Heading */
+
+.about-section .about-heading {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.about-section .about-subtitle {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-subtitle.is-shown {
+  animation: aboutSequenceReveal 0.4s ease both;
+}
+
+/* Left card */
+
+.about-section .about-intro-column {
+  opacity: 0;
+  transform: translateX(-35px);
+  filter: blur(3px);
+}
+
+.about-section .about-intro-column.is-shown {
+  animation: aboutLeftCardReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes aboutLeftCardReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+/* Status */
+
+.about-section .about-status {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-status.is-shown {
+  animation: aboutSequenceReveal 0.4s ease both;
+}
+
+/* Intro typing title */
+
+.about-section .about-intro-title {
+  opacity: 1;
+  transform: none;
+}
+
+/* Description */
+
+.about-section .about-description {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-description.is-shown {
+  animation: aboutSequenceReveal 0.4s ease both;
+}
+
+/* Professional details */
+
+.about-section .about-details {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-details.is-shown {
+  animation: aboutSequenceReveal 0.45s ease both;
+}
+
+/* Company project */
+
+.about-section .about-company-card {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-company-card.is-shown {
+  animation: aboutSequenceReveal 0.45s ease both;
+}
+
+/* CTA */
+
+.about-section .about-cta {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-cta.is-shown {
+  animation: aboutSequenceReveal 0.4s ease both;
+}
+
+/* Right card */
+
+.about-section .about-approach-column {
+  opacity: 0;
+  transform: translateX(35px);
+  filter: blur(3px);
+}
+
+.about-section .about-approach-column.is-shown {
+  animation: aboutRightCardReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes aboutRightCardReveal {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+/* Approach heading */
+
+.about-section .about-approach-heading {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-approach-heading.is-shown {
+  animation: aboutSequenceReveal 0.4s ease both;
+}
+
+/* Approach description */
+
+.about-section .about-approach-description {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-approach-description.is-shown {
+  animation: aboutSequenceReveal 0.4s ease both;
+}
+
+/* Strength cards */
+
+.about-section .about-strength {
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+.about-section .about-strength.is-shown {
+  animation: aboutStrengthReveal 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes aboutStrengthReveal {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Technology section */
+
+.about-section .about-technologies {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.about-section .about-technologies.is-shown {
+  animation: aboutSequenceReveal 0.4s ease both;
+}
+
+/* Technology tags */
+
+.about-section .about-tech-tags span {
+  opacity: 0;
+  transform: translateY(9px) scale(0.95);
+}
+
+.about-section .about-tech-tags span.is-shown {
+  animation: aboutTechReveal 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes aboutTechReveal {
+  from {
+    opacity: 0;
+    transform: translateY(9px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* =========================================
@@ -778,6 +949,13 @@
     padding: 7px 9px;
     font-size: 8px;
   }
+
+  /* Mobile animation */
+
+  .about-section .about-intro-column.is-shown,
+  .about-section .about-approach-column.is-shown {
+    animation-duration: 0.45s;
+  }
 }
 
 /* =========================================
@@ -827,10 +1005,30 @@
     transition: none !important;
   }
 
-  .about-heading,
-  .about-intro-column,
-  .about-approach-column {
-    opacity: 1;
-    transform: none;
+  .about-section .about-intro-column,
+  .about-section .about-approach-column,
+  .about-section .about-subtitle,
+  .about-section .about-status,
+  .about-section .about-description,
+  .about-section .about-details,
+  .about-section .about-company-card,
+  .about-section .about-cta,
+  .about-section .about-approach-heading,
+  .about-section .about-approach-description,
+  .about-section .about-strength,
+  .about-section .about-technologies,
+  .about-section .about-tech-tags span {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
   }
+
+  .about-section .typing-cursor {
+    display: none;
+  }
+}
+/* Pause all CSS animations when About section is outside viewport */
+.about-section:not(.about-visible) * {
+  animation-play-state: paused !important;
 }

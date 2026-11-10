@@ -10,8 +10,6 @@
   color: #ffffff;
 }
 
-/* Background glow */
-
 .projects-section::before {
   content: "";
   position: absolute;
@@ -74,6 +72,14 @@
   color: #9b8cff;
 }
 
+.projects-title .projects-title-white {
+  color: #ffffff;
+}
+
+.projects-title .projects-title-purple {
+  color: #9b8cff;
+}
+
 .projects-subtitle {
   max-width: 520px;
   margin: 16px auto 0;
@@ -88,6 +94,35 @@
   margin: 24px auto 0;
   border-radius: 10px;
   background: linear-gradient(90deg, #7663ed, #b3a7ff);
+}
+
+/* ========================================
+   TYPEWRITER CURSOR
+======================================== */
+
+.projects-title .projects-typing-cursor,
+.projects-subtitle .projects-typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  margin-left: 3px;
+  vertical-align: -0.08em;
+  background: currentColor;
+  animation: projectsCursorBlink 0.75s step-end infinite;
+}
+
+.projects-title .projects-typing-cursor {
+  color: #9b8cff;
+}
+
+.projects-subtitle .projects-typing-cursor {
+  color: #9999a6;
+}
+
+@keyframes projectsCursorBlink {
+  50% {
+    opacity: 0;
+  }
 }
 
 /* ========================================
@@ -113,21 +148,22 @@
   border-radius: 18px;
 
   opacity: 0;
+  visibility: hidden;
   transform: translateY(30px);
 
   transition:
     opacity 0.6s ease,
     transform 0.35s ease,
+    visibility 0.6s ease,
     border-color 0.35s ease,
     box-shadow 0.35s ease;
-
-  transition-delay: calc(var(--project-index, 0) * 70ms);
 }
 
-/* Reveal animation */
+/* Reveal each complete card */
 
-.projects-visible .project-card {
+.project-card.project-card-visible {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
 }
 
@@ -292,8 +328,6 @@
 
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
-
-/* Status */
 
 .project-status {
   display: inline-flex;
@@ -561,6 +595,7 @@
 @media (prefers-reduced-motion: reduce) {
   .project-card {
     opacity: 1;
+    visibility: visible;
     transform: none;
     transition: none;
   }
@@ -571,5 +606,10 @@
   .project-link-arrow {
     transform: none;
     transition: none;
+  }
+
+  .projects-title .projects-typing-cursor,
+  .projects-subtitle .projects-typing-cursor {
+    animation: none;
   }
 }

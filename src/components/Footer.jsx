@@ -6,6 +6,7 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 import "./Footer.css";
 
 const quickLinks = [
@@ -22,13 +23,19 @@ function Footer() {
 
   return (
     <footer className="portfolio-footer">
-      <div className="container">
+      <div className="footer-glow footer-glow-one" />
+      <div className="footer-glow footer-glow-two" />
+
+      <div className="container footer-container">
+        {/* TOP FOOTER */}
         <div className="footer-main">
-          {/* Brand */}
+          {/* BRAND */}
           <div className="footer-brand">
             <a href="#home" className="footer-logo">
-              Bablu <span>Joshi</span>
+              Bablu <span>Joshi.</span>
             </a>
+
+            <span className="footer-brand-tag">FULL STACK DEVELOPER</span>
 
             <p className="footer-description">
               Full Stack Developer passionate about building responsive,
@@ -66,7 +73,7 @@ function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* QUICK LINKS */}
           <div className="footer-navigation">
             <h5 className="footer-heading">Quick Links</h5>
 
@@ -75,6 +82,7 @@ function Footer() {
                 <li key={href}>
                   <a href={href} className="footer-nav-link">
                     <span>{label}</span>
+
                     <FontAwesomeIcon icon={faArrowRight} />
                   </a>
                 </li>
@@ -82,31 +90,38 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* CONTACT */}
           <div className="footer-connect">
-            <h5 className="footer-heading">Let's Connect</h5>
+            <div className="footer-connect-card">
+              <span className="footer-connect-label">
+                HAVE A PROJECT IN MIND?
+              </span>
 
-            <p>
-              Have an opportunity or a project in mind? Feel free to reach out.
-            </p>
+              <h5 className="footer-heading">Let's Connect</h5>
 
-            <a
-              href="mailto:bjbablujoshi@gmail.com?subject=Let's%20Connect"
-              className="footer-contact-btn"
-            >
-              <FontAwesomeIcon icon={faEnvelope} />
-              Contact Me
-              <FontAwesomeIcon
-                icon={faArrowRight}
-                className="footer-contact-arrow"
-              />
-            </a>
+              <p>
+                Have an opportunity or a project in mind? Feel free to reach
+                out.
+              </p>
 
-            <span className="footer-email">bjbablujoshi@gmail.com</span>
+              <a
+                href="mailto:bjbablujoshi@gmail.com?subject=Let's%20Connect"
+                className="footer-contact-btn"
+              >
+                <FontAwesomeIcon icon={faEnvelope} />
+                Contact Me
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="footer-contact-arrow"
+                />
+              </a>
+
+              <span className="footer-email">bjbablujoshi@gmail.com</span>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Footer */}
+        {/* BOTTOM FOOTER */}
         <div className="footer-bottom">
           <p className="footer-copyright">
             © {currentYear} <strong>Bablu Joshi.</strong> All rights reserved.
@@ -120,6 +135,7 @@ function Footer() {
 
           <a href="#home" className="footer-back-top">
             <span>Back to top</span>
+
             <span className="footer-back-top-icon">
               <FontAwesomeIcon icon={faArrowUp} />
             </span>

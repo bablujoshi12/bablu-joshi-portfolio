@@ -35,7 +35,6 @@ const projects = [
     github: "",
     live: "",
   },
-
   {
     title: "ShopSphere",
     category: "Full Stack E-Commerce",
@@ -91,7 +90,6 @@ const projects = [
     github: "https://github.com/bablujoshi12/MERN-AUTHENTICATION-PROJECT",
     live: "https://mern-auth-frontend-l40o.onrender.com/login",
   },
-
   {
     title: "User Management System",
     category: "CRUD Web Application",
@@ -169,8 +167,18 @@ const projects = [
 
 function Projects() {
   const sectionRef = useRef(null);
-  const [visible, setVisible] = useState(false);
 
+  const [isInView, setIsInView] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(0);
+
+  const headingText = "Featured Projects";
+  const subtitleText =
+    "A selection of my full-stack applications and practice projects.";
+
+  const [headingStage, setHeadingStage] = useState("title");
+  const [headingIndex, setHeadingIndex] = useState(0);
+
+  // Detect when Projects section enters or leaves the viewport.
   useEffect(() => {
     const section = sectionRef.current;
 
@@ -178,12 +186,11 @@ function Projects() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.05 },
+      {
+        threshold: 0.05,
+      },
     );
 
     observer.observe(section);
@@ -191,22 +198,84 @@ function Projects() {
     return () => observer.disconnect();
   }, []);
 
+  // Heading and subtitle typewriter animation.
+  // It pauses outside the viewport and resumes from the same character.
+  useEffect(() => {
+    if (!isInView || headingStage === "done") return;
+
+    const currentText = headingStage === "title" ? headingText : subtitleText;
+
+    const timer = window.setTimeout(
+      () => {
+        if (headingIndex < currentText.length) {
+          setHeadingIndex((index) => index + 1);
+        } else if (headingStage === "title") {
+          setHeadingStage("subtitle");
+          setHeadingIndex(0);
+        } else {
+          setHeadingStage("done");
+        }
+      },
+      headingStage === "title" ? 75 : 22,
+    );
+
+    return () => window.clearTimeout(timer);
+  }, [isInView, headingStage, headingIndex]);
+
+  // Reveal complete project cards one by one after heading animation.
+  useEffect(() => {
+    if (
+      !isInView ||
+      headingStage !== "done" ||
+      visibleCount >= projects.length
+    ) {
+      return;
+    }
+
+    const timer = window.setTimeout(
+      () => {
+        setVisibleCount((count) => Math.min(count + 1, projects.length));
+      },
+      visibleCount === 0 ? 120 : 520,
+    );
+
+    return () => window.clearTimeout(timer);
+  }, [isInView, headingStage, visibleCount]);
+
   return (
-    <section
-      id="projects"
-      ref={sectionRef}
-      className={`projects-section ${visible ? "projects-visible" : ""}`}
-    >
+    <section id="projects" ref={sectionRef} className="projects-section">
       <div className="container">
         <div className="projects-heading text-center">
           <span className="projects-eyebrow">WHAT I'VE BUILT</span>
 
           <h2 className="projects-title">
-            Featured <span>Projects</span>
+            <span className="projects-title-white">
+              {headingStage === "title"
+                ? headingText.slice(0, Math.min(headingIndex, 9))
+                : headingText.slice(0, 9)}
+            </span>
+
+            <span className="projects-title-purple">
+              {headingStage === "title"
+                ? headingText.slice(9, headingIndex)
+                : headingText.slice(9)}
+            </span>
+
+            {headingStage === "title" && (
+              <span className="projects-typing-cursor" aria-hidden="true" />
+            )}
           </h2>
 
           <p className="projects-subtitle">
-            A selection of my full-stack applications and practice projects.
+            {headingStage === "title"
+              ? ""
+              : headingStage === "subtitle"
+                ? subtitleText.slice(0, headingIndex)
+                : subtitleText}
+
+            {headingStage === "subtitle" && (
+              <span className="projects-typing-cursor" aria-hidden="true" />
+            )}
           </p>
 
           <div className="projects-heading-line" />
@@ -214,12 +283,12 @@ function Projects() {
 
         <div className="row g-4">
           {projects.map((project, index) => (
-            <div
-              className="col-12 col-lg-6"
-              key={project.number}
-              style={{ "--project-index": index }}
-            >
-              <article className="project-card h-100">
+            <div className="col-12 col-lg-6" key={project.number}>
+              <article
+                className={`project-card h-100 ${
+                  index < visibleCount ? "project-card-visible" : ""
+                }`}
+              >
                 <div className="project-card-top">
                   <div className="project-icon">
                     <FontAwesomeIcon icon={project.icon} />

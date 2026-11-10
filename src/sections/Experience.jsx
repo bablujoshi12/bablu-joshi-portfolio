@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
@@ -88,9 +88,81 @@ const experiences = [
   },
 ];
 
+/* =====================================
+   TYPEWRITER COMPONENT
+   Used ONLY for section heading
+===================================== */
+
+function TypewriterText({
+  text,
+  step,
+  activeStep,
+  visible,
+  onComplete,
+  speed = 35,
+}) {
+  const [displayedText, setDisplayedText] = useState("");
+  const indexRef = useRef(0);
+  const completedRef = useRef(false);
+
+  const isActive = visible && activeStep === step;
+
+  useEffect(() => {
+    if (!isActive || completedRef.current) return;
+
+    if (indexRef.current >= text.length) {
+      completedRef.current = true;
+      onComplete();
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      indexRef.current += 1;
+
+      setDisplayedText(text.slice(0, indexRef.current));
+
+      if (indexRef.current >= text.length) {
+        completedRef.current = true;
+        onComplete();
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [isActive, displayedText, text, speed, onComplete]);
+
+  return (
+    <span className="experience-typed">
+      {displayedText}
+
+      {isActive && !completedRef.current && (
+        <span className="typing-cursor" aria-hidden="true" />
+      )}
+    </span>
+  );
+}
+
+/* =====================================
+   EXPERIENCE COMPONENT
+===================================== */
+
 function Experience() {
   const sectionRef = useRef(null);
+
   const [visible, setVisible] = useState(false);
+
+  // Heading sequence:
+  // 0 = Experience
+  // 1 = & Education.
+  // 2 = Subtitle
+  // 3 = Heading completed
+  const [headingStep, setHeadingStep] = useState(-1);
+
+  // Number of cards currently revealed
+  const [visibleCards, setVisibleCards] = useState(0);
+
+  /* =====================================
+     SECTION VISIBILITY OBSERVER
+  ===================================== */
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -99,18 +171,54 @@ function Experience() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        setVisible(entry.isIntersecting);
       },
-      { threshold: 0.08 },
+      {
+        threshold: 0.1,
+      },
     );
 
     observer.observe(section);
 
     return () => observer.disconnect();
   }, []);
+
+  /* =====================================
+     START HEADING ANIMATION
+  ===================================== */
+
+  useEffect(() => {
+    if (visible && headingStep === -1) {
+      setHeadingStep(0);
+    }
+  }, [visible, headingStep]);
+
+  /* =====================================
+     HEADING SEQUENCE CALLBACK
+  ===================================== */
+
+  const nextHeadingStep = useCallback(() => {
+    setHeadingStep((current) => current + 1);
+  }, []);
+
+  /* =====================================
+     SEQUENTIAL CARD REVEAL
+
+     Cards appear only after heading
+     and subtitle typing is complete.
+  ===================================== */
+
+  useEffect(() => {
+    if (!visible || headingStep < 3) return;
+
+    if (visibleCards >= experiences.length) return;
+
+    const timeout = setTimeout(() => {
+      setVisibleCards((current) => current + 1);
+    }, 550);
+
+    return () => clearTimeout(timeout);
+  }, [visible, headingStep, visibleCards]);
 
   return (
     <section
@@ -119,120 +227,168 @@ function Experience() {
       className={`experience-section ${visible ? "experience-visible" : ""}`}
     >
       <div className="container experience-container">
-        {/* Section Heading */}
-        <div className="experience-heading">
+        {/* =====================================
+            SECTION HEADING
+        ===================================== */}
+
+        <div
+          className={`experience-heading ${headingStep >= 0 ? "is-shown" : ""}`}
+        >
           <span className="experience-eyebrow">
             <span />
             MY JOURNEY
           </span>
 
           <h2 className="experience-title">
-            Experience <span>& Education.</span>
+            <TypewriterText
+              text="Experience"
+              step={0}
+              activeStep={headingStep}
+              visible={visible}
+              speed={65}
+              onComplete={nextHeadingStep}
+            />{" "}
+            <span>
+              <TypewriterText
+                text="& Education."
+                step={1}
+                activeStep={headingStep}
+                visible={visible}
+                speed={65}
+                onComplete={nextHeadingStep}
+              />
+            </span>
           </h2>
 
           <p className="experience-subtitle">
-            My professional journey, practical experience and education.
+            <TypewriterText
+              text="My professional journey, practical experience and education."
+              step={2}
+              activeStep={headingStep}
+              visible={visible}
+              speed={20}
+              onComplete={nextHeadingStep}
+            />
           </p>
         </div>
 
-        {/* Timeline */}
+        {/* =====================================
+            EXPERIENCE TIMELINE
+        ===================================== */}
+
         <div className="experience-timeline">
-          {experiences.map((item, index) => (
-            <article
-              className={`experience-card experience-${item.type}`}
-              key={item.type}
-              style={{ "--card-index": index }}
-            >
-              {/* Timeline Icon */}
-              <div className="experience-timeline-icon">
-                <FontAwesomeIcon icon={item.icon} />
-              </div>
+          {experiences.map((item, index) => {
+            const cardVisible = index < visibleCards;
 
-              {/* Card Content */}
-              <div className="experience-card-content">
-                {/* Card Header */}
-                <div className="experience-card-header">
-                  <span className="experience-type">{item.label}</span>
+            return (
+              <article
+                className={`experience-card experience-${item.type} ${
+                  cardVisible ? "is-shown" : ""
+                }`}
+                key={item.type}
+                style={{ "--card-index": index }}
+              >
+                {/* Timeline Icon */}
 
-                  <span className="experience-duration">
-                    <FontAwesomeIcon icon={faCalendarDays} />
-                    {item.duration}
-                  </span>
+                <div className="experience-timeline-icon">
+                  <FontAwesomeIcon icon={item.icon} />
                 </div>
 
-                {/* Title */}
-                <h3 className="experience-card-title">{item.title}</h3>
+                {/* Card Content */}
 
-                {/* Organization */}
-                <div className="experience-organization">
-                  <span>
-                    <FontAwesomeIcon icon={faBuilding} />
-                    {item.organization}
-                  </span>
+                <div className="experience-card-content">
+                  {/* Card Header */}
 
-                  {item.location && (
-                    <span>
-                      <FontAwesomeIcon icon={faLocationDot} />
-                      {item.location}
+                  <div className="experience-card-header">
+                    <span className="experience-type">{item.label}</span>
+
+                    <span className="experience-duration">
+                      <FontAwesomeIcon icon={faCalendarDays} />
+                      {item.duration}
                     </span>
-                  )}
-                </div>
+                  </div>
 
-                {/* Description */}
-                <p className="experience-description">{item.description}</p>
+                  {/* Title */}
 
-                {/* Company Project Highlight */}
-                {item.project && (
-                  <div className="experience-project">
-                    <div className="experience-project-heading">
-                      <span className="experience-project-icon">
-                        <FontAwesomeIcon icon={faCode} />
+                  <h3 className="experience-card-title">{item.title}</h3>
+
+                  {/* Organization */}
+
+                  <div className="experience-organization">
+                    <span>
+                      <FontAwesomeIcon icon={faBuilding} />
+                      {item.organization}
+                    </span>
+
+                    {item.location && (
+                      <span>
+                        <FontAwesomeIcon icon={faLocationDot} />
+                        {item.location}
                       </span>
+                    )}
+                  </div>
 
-                      <div>
-                        <small>COMPANY PROJECT</small>
-                        <h4>{item.project.name}</h4>
+                  {/* Description */}
+
+                  <p className="experience-description">{item.description}</p>
+
+                  {/* Company Project */}
+
+                  {item.project && (
+                    <div className="experience-project">
+                      <div className="experience-project-heading">
+                        <span className="experience-project-icon">
+                          <FontAwesomeIcon icon={faCode} />
+                        </span>
+
+                        <div>
+                          <small>COMPANY PROJECT</small>
+
+                          <h4>{item.project.name}</h4>
+                        </div>
+                      </div>
+
+                      <p>{item.project.description}</p>
+
+                      <div className="experience-project-tech">
+                        {item.project.technologies.map((tech) => (
+                          <span key={tech}>{tech}</span>
+                        ))}
                       </div>
                     </div>
+                  )}
 
-                    <p>{item.project.description}</p>
+                  {/* Skills */}
 
-                    <div className="experience-project-tech">
-                      {item.project.technologies.map((tech) => (
-                        <span key={tech}>{tech}</span>
+                  <div className="experience-skills-wrapper">
+                    <span className="experience-skills-label">
+                      TECHNOLOGIES & SKILLS
+                    </span>
+
+                    <div className="experience-skills">
+                      {item.skills.map((skill) => (
+                        <span key={skill}>{skill}</span>
                       ))}
                     </div>
                   </div>
-                )}
 
-                {/* Skills */}
-                <div className="experience-skills-wrapper">
-                  <span className="experience-skills-label">
-                    TECHNOLOGIES & SKILLS
-                  </span>
+                  {/* Marksheet */}
 
-                  <div className="experience-skills">
-                    {item.skills.map((skill) => (
-                      <span key={skill}>{skill}</span>
-                    ))}
-                  </div>
+                  {item.type === "education" && item.marksheet && (
+                    <a
+                      href={item.marksheet}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="experience-marksheet-btn"
+                    >
+                      View Marksheet
+                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    </a>
+                  )}
                 </div>
-
-                {/* Marksheet */}
-                {item.type === "education" && item.marksheet && (
-                  <a
-                    href={item.marksheet}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="experience-marksheet-btn"
-                  >
-                    View Marksheet
-                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
 
